@@ -1,5 +1,5 @@
 import torch
-from train import BigramLanguageModel, decode, device
+from train import BigramLanguageModel, encode, decode, device
 
 # load the saved model
 def load_model(model_load_path):
@@ -9,6 +9,6 @@ def load_model(model_load_path):
     return loaded_model
 
 # generate some text
-def generate_text(loaded_model, max_new_tokens):
-    context = torch.zeros((1, 1), dtype=torch.long, device=device)
+def generate_text(loaded_model, max_new_tokens, starting_string='\n'):
+    context = torch.tensor([encode(starting_string)], dtype=torch.long, device=device)
     return decode(loaded_model.generate(context, max_new_tokens=max_new_tokens)[0].tolist())
