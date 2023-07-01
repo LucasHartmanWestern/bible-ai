@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from model_utils import load_model, generate_text
 
 app = Flask(__name__)
+CORS(app)
 
 model_load_path = "bigram_language_model.pt"
 loaded_model = load_model(model_load_path)
