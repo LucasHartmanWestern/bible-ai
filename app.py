@@ -11,6 +11,7 @@ loaded_model = load_model(model_load_path)
 @app.route('/generate', methods=['POST'])
 def generate():
     data = request.get_json()
+    print(data)
     max_new_tokens = data['max_new_tokens']
     starting_string = data['starting_string']
     generated_text = generate_text(loaded_model, max_new_tokens, starting_string)
