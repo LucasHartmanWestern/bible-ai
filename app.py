@@ -5,8 +5,12 @@ from model_utils import load_model, generate_text
 app = Flask(__name__)
 CORS(app)
 
+print("############ APP STARTED ############")
+
 model_load_path = "bigram_language_model.pt"
 loaded_model = load_model(model_load_path)
+
+print("############ MODEL LOADED ############")
 
 @app.route('/generate', methods=['POST'])
 def generate():
